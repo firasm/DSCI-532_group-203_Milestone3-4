@@ -1,0 +1,8 @@
+### Reflection
+
+- One benefit of our app is that users are allowed to directly click on the map and all the related information in other plots will be highlighted at the same time. This interaction helps efficiently retrieve the information that users need.
+- Users are allowed to select multi-area for comparing the amount of squirrels in those areas by simply press and hold shift and click the area on the map or bars in the chart.
+- The squirrel counts bars are sorted in an ascending order from top to bottom, when clicking on the bar, the area will as be highlighted on the map. This function makes it easier for users to find a place in the park where they want to see more or fewer squirrels.
+- One thing that needs to be fixed is that the Park Region in y-axis of Squirrel Behaviour by Park Region plot is not in the same order as other two bar charts. It took us quite a while trying to fix it and we even asked TA and Instructor's help but we failed to do so because there is a bug in Dash that currently has no solution. The graphs plotted in Jupyter lab are correct, but when moved into Dash, the "sort" attribute in alt.Y() doesn't apply correctly.
+- We can improve the layout of the four plots by adding the tab function to allow users to choose one plot (to be displayed) at a time.  
+- Depending on the screen size of the users, the plots by default might look a bit too big so that the users need to zoom out for the dashboard to look nice as a whole. We are marking this issue for future improvement.
