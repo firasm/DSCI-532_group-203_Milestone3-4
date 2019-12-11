@@ -166,7 +166,7 @@ plot_counts_bar <- function(highlight = vector()) {
     counts_full <- ggplot(data_map) + 
             geom_bar(aes(x = reorder(sitename, Unique_Squirrel_ID), 
                          y = Unique_Squirrel_ID, 
-                         fill = Unique_Squirrel_ID), 
+                         fill = Unique_Squirrel_ID, text = paste("Area name:", sitename, '<br>',"Squirrel count:", Unique_Squirrel_ID)), 
                      stat = 'identity') + 
 
             coord_flip() +
@@ -178,12 +178,12 @@ plot_counts_bar <- function(highlight = vector()) {
             theme_minimal() +
             theme(panel.grid.major.y = element_blank(), legend.position = c(0.8, 0.2), plot.title = element_text(hjust = 0.5))
     if (length(highlight) == 0) {
-        ggplotly(counts_full)
+        ggplotly(counts_full, tooltip="text")
         } else {
             c_h <- counts_full +
                  gghighlight(sitename %in% highlight, 
                              label_key = Unique_Squirrel_ID)
-            ggplotly(c_h)
+            ggplotly(c_h,tooltip="text")
     }
 }
 
@@ -202,7 +202,7 @@ plot_diff_bar <- function(highlight = list()) {
     diff_bar <- ggplot(data_map,
                aes(x = reorder(sitename, -Count_diff), 
                    y = -Count_diff,
-                   fill = am_pm)) +
+                   fill = am_pm, text = paste("Area name:", sitename, '<br>',"Count difference:", -Count_diff))) +
         geom_bar(stat = "identity")  +
         labs(title = 'Squirrel Abundance: Morning vs. Afternoon', 
              y = 'Difference in count', 
@@ -216,11 +216,11 @@ plot_diff_bar <- function(highlight = list()) {
               legend.title = element_blank()) 
 
     if (length(highlight) == 0){
-      ggplotly(diff_bar)
+      ggplotly(diff_bar, tooltip="text")
     } else {
         db_h <- diff_bar + gghighlight(sitename %in% highlight, 
             label_key = Unique_Squirrel_ID)
-        ggplotly(db_h)
+        ggplotly(db_h, tooltip="text")
     }
 
 }
@@ -237,7 +237,7 @@ plot_diff_bar <- function(highlight = list()) {
 #' plot_behaviors_bar(c('Ross Pinetum', 'The Ramble'))
 plot_behaviors_bar <- function(behavior = 'Running_or_chasing', highlight = vector()) {
     b_bar <- ggplot(data_map) + 
-        geom_bar(aes(reorder(sitename, !!sym(behavior)), !!sym(behavior)),
+        geom_bar(aes(reorder(sitename, !!sym(behavior)), !!sym(behavior),text = paste("Area name:", sitename, '<br>',"Squirrel count:", !!sym(behavior))),
                      stat = 'identity') + 
         coord_flip() +
         labs(title = paste('Count of Squirrels',
@@ -248,11 +248,11 @@ plot_behaviors_bar <- function(behavior = 'Running_or_chasing', highlight = vect
         theme(panel.grid.major.y = element_blank(), 
               plot.title = element_text(hjust = 0.5))
     if (length(highlight) == 0) {
-        ggplotly(b_bar)
+        ggplotly(b_bar, tooltip="text")
     } else {
         b_h <- b_bar + gghighlight(sitename %in% highlight, 
             label_key = Unique_Squirrel_ID)
-        ggplotly(b_h)
+        ggplotly(b_h,tooltip="text")
     }
 }
 
