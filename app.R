@@ -90,12 +90,15 @@ colnames(data_map) <- c('propname',
 'Count_diff',
 'geometry')
 
+data_map <- data_map %>% 
+    mutate(am_pm = case_when(Count_diff < 0 ~ "Higher count in PM", 
+                            TRUE ~ "Higher count in AM"))
 
 # Selection components
 
 label_names = paste0(data_map$number,'. ', data_map$sitename)
 
-continentDropdown <- dccDropdown(
+regionDropdown <- dccDropdown(
   id = "sitename",
   # map/lapply can be used as a shortcut instead of writing the whole list
   # especially useful if you wanted to filter by country!
@@ -199,7 +202,7 @@ plot_diff_bar <- function(highlight = list()) {
     diff_bar <- ggplot(data_map,
                aes(x = reorder(sitename, -Count_diff), 
                    y = -Count_diff,
-                   fill = Count_diff > 0)) +
+                   fill = am_pm)) +
         geom_bar(stat = "identity")  +
         labs(title = 'Squirrel Abundance: Morning vs. Afternoon', 
              y = 'Difference in count', 
@@ -209,10 +212,9 @@ plot_diff_bar <- function(highlight = list()) {
         theme_minimal() +
         theme(panel.grid.major.y = element_blank(), 
               legend.position = c(0.8, 0.1), 
-              plot.title = element_text(hjust = 0.5)) +
-        scale_fill_discrete(name = NULL, 
-                            labels = c("Higher count in PM", 
-                            "Higher count in AM"))
+              plot.title = element_text(hjust = 0.5),
+              legend.title = element_blank()) 
+
     if (length(highlight) == 0){
       ggplotly(diff_bar)
     } else {
@@ -302,7 +304,7 @@ pageSubTitle <- htmlDiv(
 )
 
 app_description <- htmlDiv(
-  "Add a longer app description?",
+  "View squirrel distribution by park region, time of the day, and behavior.",
   style = list(
     textAlign = 'center',
     color = colors$text
@@ -320,14 +322,16 @@ app$layout(
       app_description,
       #selection components
       htmlIframe(height=50, width=10, style=list(borderWidth = 0)), #space
-      htmlLabel('Select continents:'),
-      continentDropdown,
+      htmlLabel('Select park region:'),
+      htmlLabel('The selected park regions will be highlighted in all the plots. Click "x" in front of the labels to cancel selection. You may also cancel all your selections by clicking the "x" at the end of the drop-down menu.'),
+      regionDropdown,
       map_graph,
       #space
       htmlIframe(height=15, width=10, style=list(borderWidth = 0)),
       count_graph,
       #space
       htmlIframe(height=15, width=10, style=list(borderWidth = 0)),
+      htmlLabel('In the following plot, blue bar means more squirrels in the afternoon (PM). Red bar means more in the morning (AM).'),
       countdiff_graph,
       #space
       htmlIframe(height=15, width=10, style=list(borderWidth = 0)),
