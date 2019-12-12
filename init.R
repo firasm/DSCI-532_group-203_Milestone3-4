@@ -70,4 +70,4 @@ install.packages("ggplot2")
 install.packages("dplyr")
 install.packages("gghighlight")
 
-remotes::install_version("sf", version = "0.8-0", repos = "https://cran.r-project.org/src/contrib/sf_0.8-0.tar.gz", upgrade="never")
+install.packages("https://cloud.r-project.org/src/contrib/sf_0.8-0.tar.gz", type="source", repos=NULL)
