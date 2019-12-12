@@ -392,4 +392,4 @@ app$callback(
 
 
 
-app$run_server(host = "127.0.0.1", port = Sys.getenv('PORT', 8050))
+app$run_server(host = "206.87.122.136", port = Sys.getenv('PORT', 8050))
