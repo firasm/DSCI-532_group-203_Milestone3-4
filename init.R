@@ -64,10 +64,11 @@ remotes::install_github("plotly/dashR", ref="dev", dependencies=FALSE)
 
 
 # Roc
+install.packages("units")
 install.packages("tidyverse")
-# install.packages("sf")
+install.packages("sf")
 install.packages("ggplot2")
 install.packages("dplyr")
 install.packages("gghighlight")
 
-install.packages("https://cloud.r-project.org/src/contrib/sf_0.8-0.tar.gz", type="source", repos=NULL)
+# install.packages("https://cloud.r-project.org/src/contrib/sf_0.8-0.tar.gz", type="source", repos=NULL)
