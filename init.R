@@ -16,16 +16,10 @@ install.packages("later")
 
 install.packages("https://cran.r-project.org/src/contrib/jsonlite_1.6.tar.gz", type="source", repos=NULL)
 install.packages("rjson")
-# install.packages("listenv")
-# install.packages("anytime")
-# install.packages("readr")
-# install.packages("heatmaply")
-# Roc
-install.packages("tidyverse")
-install.packages("sf")
-install.packages("ggplot2")
-install.packages("dplyr")
-install.packages("gghighlight")
+install.packages("listenv")
+install.packages("anytime")
+install.packages("readr")
+install.packages("heatmaply")
 
 
 # Roc
@@ -67,3 +61,11 @@ remotes::install_github("plotly/dash-table", ref="042ad65")
 remotes::install_github("plotly/dash-html-components", ref="17da1f4")
 remotes::install_github("plotly/dash-core-components", ref="cc1e654")
 remotes::install_github("plotly/dashR", ref="dev", dependencies=FALSE)
+
+
+# Roc
+install.packages("tidyverse")
+install.packages("sf")
+install.packages("ggplot2")
+install.packages("dplyr")
+install.packages("gghighlight")
