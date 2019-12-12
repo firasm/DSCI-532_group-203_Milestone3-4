@@ -16,17 +16,24 @@ install.packages("later")
 
 install.packages("https://cran.r-project.org/src/contrib/jsonlite_1.6.tar.gz", type="source", repos=NULL)
 install.packages("rjson")
-install.packages("listenv")
-install.packages("anytime")
-install.packages("readr")
-install.packages("heatmaply")
+# install.packages("listenv")
+# install.packages("anytime")
+# install.packages("readr")
+# install.packages("heatmaply")
+# Roc
+install.packages("tidyverse")
+install.packages("sf")
+install.packages("ggplot2")
+install.packages("dplyr")
+install.packages("gghighlight")
+
 
 # Roc
-remotes::install_version("tidyverse", version = "1.3.0", repos = "https://cran.r-project.org/src/contrib/tidyverse_1.3.0.tar.gz", upgrade="never")
-remotes::install_version("sf", version = "0.8-0", repos = "https://cran.r-project.org/src/contrib/sf_0.8-0.tar.gz", upgrade="never")
-remotes::install_version("ggplot2", version = "3.2.1", repos = "https://cran.r-project.org/src/contrib/ggplot2_3.2.1.tar.gz", upgrade="never")
-remotes::install_version("dplyr", version = "0.8.3", repos = "https://cran.r-project.org/src/contrib/dplyr_0.8.3.tar.gz", upgrade="never")
-remotes::install_version("gghighlight", version = "0.1.0", repos = "https://cran.r-project.org/src/contrib/gghighlight_0.1.0.tar.gz", upgrade="never")
+# remotes::install_version("tidyverse", version = "1.3.0", repos = "https://cran.r-project.org/src/contrib/tidyverse_1.3.0.tar.gz", upgrade="never")
+# remotes::install_version("sf", version = "0.8-0", repos = "https://cran.r-project.org/src/contrib/sf_0.8-0.tar.gz", upgrade="never")
+# remotes::install_version("ggplot2", version = "3.2.1", repos = "https://cran.r-project.org/src/contrib/ggplot2_3.2.1.tar.gz", upgrade="never")
+# remotes::install_version("dplyr", version = "0.8.3", repos = "https://cran.r-project.org/src/contrib/dplyr_0.8.3.tar.gz", upgrade="never")
+# remotes::install_version("gghighlight", version = "0.1.0", repos = "https://cran.r-project.org/src/contrib/gghighlight_0.1.0.tar.gz", upgrade="never")
 
 # installs magrittr, promises, R6
 remotes::install_version("httpuv", version = "1.4.5.1", repos = "http://cloud.r-project.org", upgrade="never")
