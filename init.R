@@ -65,7 +65,9 @@ remotes::install_github("plotly/dashR", ref="dev", dependencies=FALSE)
 
 # Roc
 install.packages("tidyverse")
-install.packages("sf")
+# install.packages("sf")
 install.packages("ggplot2")
 install.packages("dplyr")
 install.packages("gghighlight")
+
+remotes::install_version("sf", version = "0.8-0", repos = "https://cran.r-project.org/src/contrib/sf_0.8-0.tar.gz", upgrade="never")
