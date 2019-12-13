@@ -322,7 +322,7 @@ pageTitle <- htmlH1(
   )
 )
 
-pageSubTitle <- htmlDiv(
+pageSubTitle <- htmlH6(
   "Guide your observance of the famous squirrels of New York's Central Park",
   style = list(
     textAlign = 'center',
@@ -330,7 +330,7 @@ pageSubTitle <- htmlDiv(
   )
 )
 
-app_description <- htmlDiv(
+app_description <- htmlH6(
   "View squirrel distribution by park region, time of the day, and behavior.",
   style = list(
     textAlign = 'center',
@@ -349,8 +349,8 @@ app$layout(
       app_description,
       #selection components
       htmlIframe(height=50, width=10, style=list(borderWidth = 0)), #space
-      htmlLabel('Select park region:'),
-      htmlLabel('The selected park regions will be highlighted in all the plots. Click "x" in front of the labels to cancel selection. You may also cancel all your selections by clicking the "x" at the end of the drop-down menu.'),
+      htmlH4('Select park region:'),
+      htmlH6('The selected park regions will be highlighted in all the plots. Click "x" in front of the labels to cancel selection. You may also cancel all your selections by clicking the "x" at the end of the drop-down menu.'),
       regionDropdown,
       htmlIframe(height=25, width=10, style=list(borderWidth = 0)), #space
       map_graph,
@@ -359,11 +359,11 @@ app$layout(
       count_graph,htmlIframe(height=50, width=10, style=list(borderWidth = 0)), #space
       #space
       htmlIframe(height=50, width=10, style=list(borderWidth = 0)),
-      htmlLabel('In the following plot, blue bar means more squirrels in the afternoon (PM). Red bar means more in the morning (AM).'),
+      htmlH4('In the following plot, blue bar means more squirrels in the afternoon (PM). Red bar means more in the morning (AM).'),
       countdiff_graph,
       #space
       htmlIframe(height=50, width=10, style=list(borderWidth = 0)),
-      htmlLabel('Select behavior to display below:'),
+      htmlH4('Select behavior to display below:'),
       behaviorDropdown,
       b_graph,
       htmlIframe(height=20, width=10, style=list(borderWidth = 0)), #space

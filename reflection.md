@@ -8,10 +8,14 @@
 
 - The squirrel counts bars are sorted in ascending order from top to bottom, which helps users easily find a place that has the most or least amount of squirrels.
 
-#### Things need to be fixed or improved:
-- The tooltip on the map only shows the area's number instead of its name. It is not showing the count of squirrel either. Ideally, we would like to have the area's longitude, latitude, name of that area and the count of squirrel in that area in the tooltip of the map.
+#### Things need to be fixed or improved:  
+- The biggest problem is that we can't manage to deploy it on Heroku. Lots of work and thoughts were put into it but Firas and us had to agree that we should leave it for now.  
 
-- The layout could be much well-organized, with two plots displayed side by side.
+- There are also some problems with the tooltips.   
+    - First, the tooltip on the map only shows the area's number instead of its name. It is not showing the count of squirrel either. Ideally, we would like to have the area's longitude, latitude, name of that area and the count of squirrel in that area in the tooltip of the map.
+    - Secondly, after using drop-down selection, the tooltip won't show.    
+
+- The layout could obviously be better-organized.   
 
 - The font size could be bigger.
 
