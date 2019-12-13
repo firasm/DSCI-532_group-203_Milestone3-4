@@ -202,7 +202,7 @@ plot_diff_bar <- function(highlight = list()) {
     diff_bar <- ggplot(data_map,
                aes(x = reorder(sitename, -Count_diff), 
                    y = -Count_diff,
-                   fill = am_pm, text = paste("Area name:", sitename, '<br>',"Count difference:", -Count_diff))) +
+                   fill = am_pm)) + # , text = paste("Area name:", sitename, '<br>',"Count difference:", -Count_diff)
         geom_bar(stat = "identity")  +
         labs(title = 'Squirrel Abundance: Morning vs. Afternoon', 
              y = 'Difference in count', 
@@ -216,11 +216,11 @@ plot_diff_bar <- function(highlight = list()) {
               legend.title = element_blank()) 
 
     if (length(highlight) == 0){
-      ggplotly(diff_bar, tooltip="text")
+      ggplotly(diff_bar) #, tooltip="text"
     } else {
         db_h <- diff_bar + gghighlight(sitename %in% highlight, 
             label_key = Unique_Squirrel_ID)
-        ggplotly(db_h, tooltip="text")
+        ggplotly(db_h) #, tooltip="text"
     }
 
 }
