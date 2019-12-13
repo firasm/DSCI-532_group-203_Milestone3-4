@@ -208,7 +208,7 @@ plot_diff_bar <- function(highlight = list()) {
       diff_bar <- ggplot(data_map,
                aes(x = reorder(sitename, -Count_diff), 
                    y = -Count_diff,
-                   fill = am_pm)) + # , text = paste("Area name:", sitename, '<br>',"Count difference:", -Count_diff)
+                   fill = am_pm, text = paste("Area name:", sitename, '<br>',"Count difference:", -Count_diff))) +
         geom_bar(stat = "identity")  +
         labs(title = 'Squirrel Abundance: Morning vs. Afternoon', 
              y = 'Difference in count', 
@@ -223,8 +223,7 @@ plot_diff_bar <- function(highlight = list()) {
               axis.title = element_text(size = ys),
               legend.title = element_blank()) 
 
-    if (length(highlight) == 0){
-      ggplotly(diff_bar) #, tooltip="text"
+      ggplotly(diff_bar, tooltip="text")
     } else {
         diff_bar <- ggplot(data_map,
                aes(x = reorder(sitename, -Count_diff), 
@@ -246,7 +245,7 @@ plot_diff_bar <- function(highlight = list()) {
 
         db_h <- diff_bar + gghighlight(sitename %in% highlight, 
             label_key = Unique_Squirrel_ID)
-        ggplotly(db_h) #, tooltip="text"
+        ggplotly(db_h, tooltip="text")
     }
 
 }
@@ -323,7 +322,7 @@ pageTitle <- htmlH1(
   )
 )
 
-pageSubTitle <- htmlDiv(
+pageSubTitle <- htmlH6(
   "Guide your observance of the famous squirrels of New York's Central Park",
   style = list(
     textAlign = 'center',
@@ -331,7 +330,7 @@ pageSubTitle <- htmlDiv(
   )
 )
 
-app_description <- htmlDiv(
+app_description <- htmlH6(
   "View squirrel distribution by park region, time of the day, and behavior.",
   style = list(
     textAlign = 'center',
@@ -350,8 +349,8 @@ app$layout(
       app_description,
       #selection components
       htmlIframe(height=50, width=10, style=list(borderWidth = 0)), #space
-      htmlLabel('Select park region:'),
-      htmlLabel('The selected park regions will be highlighted in all the plots. Click "x" in front of the labels to cancel selection. You may also cancel all your selections by clicking the "x" at the end of the drop-down menu.'),
+      htmlH4('Select park region:'),
+      htmlH6('The selected park regions will be highlighted in all the plots. Click "x" in front of the labels to cancel selection. You may also cancel all your selections by clicking the "x" at the end of the drop-down menu.'),
       regionDropdown,
       htmlIframe(height=25, width=10, style=list(borderWidth = 0)), #space
       map_graph,
@@ -360,11 +359,11 @@ app$layout(
       count_graph,htmlIframe(height=50, width=10, style=list(borderWidth = 0)), #space
       #space
       htmlIframe(height=50, width=10, style=list(borderWidth = 0)),
-      htmlLabel('In the following plot, blue bar means more squirrels in the afternoon (PM). Red bar means more in the morning (AM).'),
+      htmlH4('In the following plot, blue bar means more squirrels in the afternoon (PM). Red bar means more in the morning (AM).'),
       countdiff_graph,
       #space
       htmlIframe(height=50, width=10, style=list(borderWidth = 0)),
-      htmlLabel('Select behavior to display below:'),
+      htmlH4('Select behavior to display below:'),
       behaviorDropdown,
       b_graph,
       htmlIframe(height=20, width=10, style=list(borderWidth = 0)), #space
@@ -421,4 +420,4 @@ app$callback(
 
 
 
-app$run_server(host = "0.0.0.0", port = Sys.getenv('PORT', 8050))
+app$run_server()
