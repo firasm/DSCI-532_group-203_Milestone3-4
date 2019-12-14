@@ -188,7 +188,7 @@ plot_counts_bar <- function(highlight = vector()) {
             c_h <- counts_full +
                  gghighlight(sitename %in% highlight, 
                              label_key = Unique_Squirrel_ID)
-            ggplotly(c_h,tooltip="text")
+            ggplotly(c_h, tooltip=c("x","y"))
     }
 }
 
@@ -245,7 +245,7 @@ plot_diff_bar <- function(highlight = list()) {
 
         db_h <- diff_bar + gghighlight(sitename %in% highlight, 
             label_key = Unique_Squirrel_ID)
-        ggplotly(db_h, tooltip="text")
+        ggplotly(db_h, tooltip=c("x","y"))
     }
 
 }
@@ -279,7 +279,7 @@ plot_behaviors_bar <- function(behavior = 'Running_or_chasing', highlight = vect
     } else {
         b_h <- b_bar + gghighlight(sitename %in% highlight, 
             label_key = Unique_Squirrel_ID)
-        ggplotly(b_h,tooltip="text")
+        ggplotly(b_h,tooltip=c("x","y"))
     }
 }
 
@@ -368,7 +368,26 @@ app$layout(
       b_graph,
       htmlIframe(height=20, width=10, style=list(borderWidth = 0)), #space
       htmlIframe(height=20, width=10, style=list(borderWidth = 0)), #space
-      dccMarkdown("[Data Source](https://data.cityofnewyork.us/Environment/2018-Central-Park-Squirrel-Census-Squirrel-Data/vfnx-vebw)")
+      htmlH4(
+  "Sources",
+  style = list(
+    textAlign = 'center',
+    color = colors$text
+  )
+),    htmlH6(
+  dccMarkdown("[Data Source](https://data.cityofnewyork.us/Environment/2018-Central-Park-Squirrel-Census-Squirrel-Data/vfnx-vebw)"),
+  style = list(
+    textAlign = 'center',
+    color = colors$text
+  )
+),    htmlH6(
+  dccMarkdown("[GitHub page](https://github.com/UBC-MDS/DSCI-532_group-203_Milestone3-4)"),
+  style = list(
+    textAlign = 'center',
+    color = colors$text
+  )
+)
+              
     )
  #   style = list(backgroundColor = colors$background)
   )

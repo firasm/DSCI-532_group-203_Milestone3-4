@@ -15,7 +15,7 @@
 
 - There are also some problems with the tooltips.   
     - First, the tooltip on the map only shows the area's number instead of its name. It is not showing the count of squirrels either. Ideally, we would like to have the area's longitude, latitude, name of that area and the count of squirrel in that area in the tooltip of the map.
-    - Secondly, after using drop-down selection, the tooltip won't show.    
+    - Secondly, after using drop-down selection, the tooltip is not showing in a nice-look customized way. (The labels could be more clear.)   
 
 - Attempts to remove certain plotly functionalities from the plotly bar that do not add to the use of our app (select, lasso-select, logo) as per our lecture notes and plotly reference documents were unsuccessful. Given more time, we could investigate this issue further.
 
